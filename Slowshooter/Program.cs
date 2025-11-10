@@ -17,7 +17,7 @@ namespace Slowshooter
         
 
         static string playField = 
-@"+------------+
+@"+-------------+
 |             |
 |             |
 |             |
@@ -138,7 +138,7 @@ namespace Slowshooter
             p1_health = p1_health - 1;
             if(p1_health == 0)
             {
-                Console.WriteLine(" Player A1 has died");
+                Console.WriteLine(" Player 1 has died");
                 isPlaying = false;
             }
         }
