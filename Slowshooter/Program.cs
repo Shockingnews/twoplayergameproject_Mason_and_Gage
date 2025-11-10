@@ -11,6 +11,7 @@ namespace Slowshooter
         static int p2_health = 10;
         static int p2_fullHealth = 10;
         static int p2_healthPack = p2_fullHealth;
+        static Random rng = new Random();
 
         static string playField = 
 @"+---+   +---+
@@ -87,20 +88,60 @@ namespace Slowshooter
             }
 
             // check all input keys 
-            if (input == ConsoleKey.A) p1_x_input = -1;
-            if (input == ConsoleKey.D) p1_x_input = 1;
-            if (input == ConsoleKey.W) p1_y_input = -1;
-            if (input == ConsoleKey.S) p1_y_input = 1;
-          
-            if (input == ConsoleKey.J) p2_x_input = -1;
-            if (input == ConsoleKey.L) p2_x_input = 1;
-            if (input == ConsoleKey.I) p2_y_input = -1;
-            if (input == ConsoleKey.K) p2_y_input = 1;
+            if (input == ConsoleKey.A)
+            {
+                p1_x_input = -1;
+                damagep1();
+            }
+            if (input == ConsoleKey.D)
+            {
+                p1_x_input = 1;
+                damagep1();
+            }
+            if (input == ConsoleKey.W)
+            {
+                p1_y_input = -1;
+                damagep1();
+            }
+            if (input == ConsoleKey.S)
+            {
+                damagep1();
+                p1_y_input = 1;
+            }
 
+            if (input == ConsoleKey.J)
+            {
+                damagep2();
+                p2_x_input = -1;
+            }
+            if (input == ConsoleKey.L)
+            {
+                damagep2();
+                p2_x_input = 1;
+            }
+            if (input == ConsoleKey.I)
+            {
+                damagep2();
+                p2_y_input = -1;
+            }
+            if (input == ConsoleKey.K)
+            {
+                damagep2();
+                p2_y_input = 1;
+            }
         }
         static void damagep1()
         {
-
+            p1_health -= 1;
+            if(p1_health == 0)
+            {
+                Console.WriteLine("P1 has died");
+            }
+        }
+        static void damagep2()
+        {
+            p2_health -= 1;
+            Console.WriteLine("P2 has died");
         }
 
         static void Update()
@@ -148,6 +189,9 @@ namespace Slowshooter
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("\nUSE WASD or IJKL to move");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine(p1_health);
+            Console.WriteLine(p2_health);
         }
     }
 }
