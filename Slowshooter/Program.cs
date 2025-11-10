@@ -14,13 +14,14 @@ namespace Slowshooter
         static Random rng = new Random();
 
         static Random reandomhealth = new Random();
+        
 
         static string playField = 
-@"+---+   +---+
-|   |   |   |
-|   |   |   |
-|   |   |   |
-+---+   +---+";
+@"+------------+
+|             |
+|             |
+|             |
++-------------+";
 
         static bool isPlaying = true;
 
@@ -40,9 +41,9 @@ namespace Slowshooter
         static int p2_y_pos = 2;
 
         // bounds for player movement
-        static (int, int) p1_min_max_x = (1, 3);
+        static (int, int) p1_min_max_x = (1, 13);
         static (int, int) p1_min_max_y = (1, 3);
-        static (int, int) p2_min_max_x = (9, 11);
+        static (int, int) p2_min_max_x = (1, 13);
         static (int, int) p2_min_max_y = (1, 3);
 
         // what turn is it? will be 0 after game is drawn the first time
