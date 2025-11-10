@@ -133,6 +133,10 @@ namespace Slowshooter
                 p2_y_input = 1;
             }
         }
+        static void healthpackspawner()
+        {
+
+        }
         static void damagep1()
         {
             p1_health = p1_health - 1;
