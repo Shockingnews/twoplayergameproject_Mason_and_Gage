@@ -137,7 +137,9 @@ namespace Slowshooter
         {
             int healthPack_Xmaxmin = healthPack_x.Next(1, 14);
             int healthPack_Ymaxmin = healthPack_y.Next(1, 4);
-            Console.SetCursorPosition(healthPack_Xmaxmin, healthPack_Ymaxmin);d
+            Console.SetCursorPosition(healthPack_Xmaxmin, healthPack_Ymaxmin);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("+");
         }
         static void damagep1()
         {
@@ -157,7 +159,14 @@ namespace Slowshooter
                 isPlaying = false;
             }
         }
-
+        static void healup1()
+        {
+            p1_health = p1_fullHealth;
+        }
+        static void healup2()
+        {
+            p2_health = p2_fullHealth;
+        }
         static void Update()
         {
             // update players' positions based on input
@@ -193,6 +202,7 @@ namespace Slowshooter
             Console.ForegroundColor = playerColors[1];
             Console.Write("O");
 
+            healthpackspawner();
             // draw the Turn Indicator
             Console.SetCursorPosition(3, 5);
             Console.ForegroundColor = playerColors[turn % 2];
