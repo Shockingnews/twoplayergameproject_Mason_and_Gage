@@ -45,7 +45,10 @@ namespace Slowshooter
         static (int, int) p1_min_max_y = (1, 3);
         static (int, int) p2_min_max_x = (1, 13);
         static (int, int) p2_min_max_y = (1, 3);
-        
+
+        static int healthPack_Xmaxmin = healthPack_x.Next(1, 14);
+        static int healthPack_Ymaxmin = healthPack_y.Next(1, 4);
+
         // what turn is it? will be 0 after game is drawn the first time
         static int turn = -1;
 
@@ -135,8 +138,6 @@ namespace Slowshooter
         }
         static void healthpackspawner()
         {
-            int healthPack_Xmaxmin = healthPack_x.Next(1, 14);
-            int healthPack_Ymaxmin = healthPack_y.Next(1, 4);
             Console.SetCursorPosition(healthPack_Xmaxmin, healthPack_Ymaxmin);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("+");
