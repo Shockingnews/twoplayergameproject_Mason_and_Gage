@@ -5,9 +5,12 @@ namespace Slowshooter
 {
     internal class Program
     {
-        static int health = 10;
-        static int fullHealth = 10;
-        static int healthPack = fullHealth;
+        static int p1_health = 10;
+        static int p1_fullHealth = 10;
+        static int p1_healthPack = p1_fullHealth;
+        static int p2_health = 10;
+        static int p2_fullHealth = 10;
+        static int p2_healthPack = p2_fullHealth;
 
         static string playField = 
 @"+---+   +---+
