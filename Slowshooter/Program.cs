@@ -95,6 +95,10 @@ namespace Slowshooter
             if (input == ConsoleKey.K) p2_y_input = 1;
 
         }
+        static void damagep1()
+        {
+
+        }
 
         static void Update()
         {
