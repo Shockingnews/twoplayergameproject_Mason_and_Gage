@@ -46,7 +46,7 @@ namespace Slowshooter
         static (int, int) p2_min_max_x = (1, 13);
         static (int, int) p2_min_max_y = (1, 3);
         static (int, int) healthPack_x = (1, 13);
-        static (int, int) healthPack_y = (1, 3);
+        static (int, int) healthPack_dy = (1, 3);
         // what turn is it? will be 0 after game is drawn the first time
         static int turn = -1;
 
