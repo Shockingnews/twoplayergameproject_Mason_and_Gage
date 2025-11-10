@@ -137,6 +137,7 @@ namespace Slowshooter
         {
             int healthPack_Xmaxmin = healthPack_x.Next(1, 14);
             int healthPack_Ymaxmin = healthPack_y.Next(1, 4);
+            Console.SetCursorPosition(healthPack_Xmaxmin, healthPack_Ymaxmin);d
         }
         static void damagep1()
         {
