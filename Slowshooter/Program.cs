@@ -134,16 +134,21 @@ namespace Slowshooter
         }
         static void damagep1()
         {
-            p1_health -= 1;
+            p1_health = p1_health - 1;
             if(p1_health == 0)
             {
-                Console.WriteLine("P1 has died");
+                Console.WriteLine(" Player A1 has died");
+                isPlaying = false;
             }
         }
         static void damagep2()
         {
-            p2_health -= 1;
-            Console.WriteLine("P2 has died");
+            p2_health = p2_health - 1;
+            if (p2_health == 0)
+            { 
+                Console.WriteLine(" Player 2 has died");
+                isPlaying = false;
+            }
         }
 
         static void Update()
