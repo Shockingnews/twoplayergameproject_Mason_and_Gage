@@ -213,6 +213,7 @@ namespace Slowshooter
 
         static void Draw()
         {
+            Console.Clear();
             // draw the background (playfield)
             Console.SetCursorPosition(0, 0);
             Console.Write(playField);
@@ -243,8 +244,9 @@ namespace Slowshooter
             Console.WriteLine("\nUSE WASD or IJKL to move");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
-            Console.WriteLine(p1_health);
-            Console.WriteLine(p2_health);
+            Console.WriteLine($"Player 1 hp: {p1_health}");
+            Console.WriteLine($"Player 2 hp: {p2_health}");
+            
         }
     }
 }
