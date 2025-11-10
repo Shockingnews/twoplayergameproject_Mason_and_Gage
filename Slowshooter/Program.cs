@@ -46,8 +46,9 @@ namespace Slowshooter
         static (int, int) p2_min_max_x = (1, 13);
         static (int, int) p2_min_max_y = (1, 3);
 
-        static int healthPack_Xmaxmin = healthPack_x.Next(1, 14);
-        static int healthPack_Ymaxmin = healthPack_y.Next(1, 4);
+        static int healthPack_Xmaxmin;
+        static int healthPack_Ymaxmin;
+        static bool iscollected = true;
 
         // what turn is it? will be 0 after game is drawn the first time
         static int turn = -1;
@@ -138,9 +139,32 @@ namespace Slowshooter
         }
         static void healthpackspawner()
         {
-            Console.SetCursorPosition(healthPack_Xmaxmin, healthPack_Ymaxmin);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("+");
+            collecterchecker();
+            if(iscollected == true)
+            {
+                healthPack_Xmaxmin = healthPack_x.Next(2, 14);
+                healthPack_Ymaxmin = healthPack_y.Next(2, 4);
+                iscollected = false;
+            }
+        }
+        static void collecterchecker()
+        {
+            if (p1_x_pos == healthPack_Xmaxmin)
+            {
+                if(p1_y_pos == healthPack_Ymaxmin)
+                {
+                    healup1();
+                    iscollected = true;
+                }
+            }
+            if(p2_x_pos == healthPack_Xmaxmin)
+            {
+                if(p2_y_pos == healthPack_Ymaxmin)
+                {
+                    healup2();
+                    iscollected = true;
+                }
+            }
         }
         static void damagep1()
         {
@@ -204,6 +228,10 @@ namespace Slowshooter
             Console.Write("O");
 
             healthpackspawner();
+            Console.SetCursorPosition(healthPack_Xmaxmin, healthPack_Ymaxmin);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("+");
+
             // draw the Turn Indicator
             Console.SetCursorPosition(3, 5);
             Console.ForegroundColor = playerColors[turn % 2];
