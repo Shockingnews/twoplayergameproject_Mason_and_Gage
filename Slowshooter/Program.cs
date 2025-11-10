@@ -12,6 +12,8 @@ namespace Slowshooter
         static int p2_fullHealth = 10;
         static int p2_healthPack = p2_fullHealth;
 
+        static Random reandomhealth = new Random();
+
         static string playField = 
 @"+---+   +---+
 |   |   |   |
