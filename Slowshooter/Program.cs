@@ -171,6 +171,7 @@ namespace Slowshooter
             p1_health = p1_health - 1;
             if(p1_health == 0)
             {
+                Console.Clear();
                 Console.WriteLine(" Player 1 has died");
                 isPlaying = false;
             }
@@ -179,7 +180,8 @@ namespace Slowshooter
         {
             p2_health = p2_health - 1;
             if (p2_health == 0)
-            { 
+            {
+                Console.Clear();
                 Console.WriteLine(" Player 2 has died");
                 isPlaying = false;
             }
