@@ -11,6 +11,8 @@ namespace Slowshooter
         static int p2_health = 10;
         static int p2_fullHealth = 10;
         static int p2_healthPack = p2_fullHealth;
+        static int healthPack_xmin =2;
+        static int healthPack_xmax=14;
         static Random rng = new Random();
 
         static Random healthPack_x = new Random();
@@ -52,6 +54,7 @@ namespace Slowshooter
 
         // what turn is it? will be 0 after game is drawn the first time
         static int turn = -1;
+        static int nextTurn = 5;
 
         // contains the keys that player 1 and player 2 are allowed to press
         static (char[], char[]) allKeybindings = (new char[]{ 'W', 'A', 'S', 'D' }, new char[]{ 'J', 'I', 'L', 'K' });
@@ -142,7 +145,7 @@ namespace Slowshooter
             collecterchecker();
             if(iscollected == true)
             {
-                healthPack_Xmaxmin = healthPack_x.Next(2, 14);
+                healthPack_Xmaxmin = healthPack_x.Next(healthPack_xmin, healthPack_xmax);
                 healthPack_Ymaxmin = healthPack_y.Next(2, 4);
                 iscollected = false;
             }
@@ -171,28 +174,32 @@ namespace Slowshooter
             p1_health = p1_health - 1;
             if(p1_health == 0)
             {
-                Console.Clear();
+                
                 Console.WriteLine(" Player 1 has died");
                 isPlaying = false;
             }
+            Console.Clear();
         }
         static void damagep2()
         {
             p2_health = p2_health - 1;
             if (p2_health == 0)
             {
-                Console.Clear();
+                
                 Console.WriteLine(" Player 2 has died");
                 isPlaying = false;
             }
+            Console.Clear();
         }
         static void healup1()
         {
             p1_health = p1_fullHealth;
+            
         }
         static void healup2()
         {
             p2_health = p2_fullHealth;
+           
         }
         static void Update()
         {
@@ -210,6 +217,81 @@ namespace Slowshooter
             p2_y_pos = p2_y_pos.Clamp(p2_min_max_y.Item1, p2_min_max_y.Item2);
 
             turn += 1;
+
+            // checks turn and updates map position
+            if (turn == nextTurn)
+            {
+                if(p1_min_max_x.Item1 != 5)
+                {
+                    p1_min_max_x.Item1 += 1;
+                    
+
+                }
+                if(p1_min_max_x.Item2 != 9) 
+                {
+                    p1_min_max_x.Item2 -= 1;
+                   
+
+                }
+                if(healthPack_xmin != 5)
+                {
+                    healthPack_xmin += 1;
+                }
+                if (healthPack_xmax != 7)
+                {
+                    healthPack_xmax -= 1;
+                }
+
+                if (p2_min_max_x.Item1 != 5)
+                {
+                    p2_min_max_x.Item1 += 1;
+                }
+                if (p2_min_max_x.Item2 != 9)
+                {
+                    p2_min_max_x.Item2 -= 1;
+                }
+                if (nextTurn == 5)
+                {
+                    playField =
+@" +----------+
+ |          |
+ |          |
+ |          |
+ +----------+";
+                }
+                if (nextTurn == 10)
+                {
+                    playField =
+@"  +--------+
+  |        |
+  |        |
+  |        |
+  +--------+";
+                }
+                if (nextTurn == 15)
+                {
+                    playField =
+@"    +------+
+    |      |
+    |      |
+    |      |
+    +------+";
+
+                }
+                if (nextTurn == 20)
+                {
+                    playField =
+@"     +-----+
+     |     |
+     |     |
+     |     |
+     +-----+";
+
+                }
+
+
+                nextTurn += 5;
+            }
 
         }
 
